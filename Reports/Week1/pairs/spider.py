@@ -15,7 +15,7 @@ base_url = 'http://www.pemberley.com/etext/PandP/'
 def get_content(url):
     response = requests.get(url)
     htm = html.fromstring(response.text.replace('<i>', '').replace('</i>', ''))
-    content = [x.replace('\xa0', '').strip() for x in htm.xpath('//div[@class="supptext"]/p/text()')]
+    content = [x.replace('\xa0', '').strip() for x in htm.xpath('//div[@class="supptext"]//*/text()')]
     # print(content)
     return content
 
