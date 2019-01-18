@@ -220,10 +220,47 @@ class DecisionTreeClassifier(object):
 
 if __name__ == '__main__':
     dataset, labels, feature_names = load_dataset()
-    # shannon_entropy = calculate_shannon_entropy(labels)
-    # gain, feature = choose_best_feature_to_split(dataset, labels)
-    # print(gain, feature)
     clf = DecisionTreeClassifier()
     clf.train(dataset, labels, feature_names)
     result = clf.classify([2, 1])
     print(result)
+
+    # from sklearn.datasets import load_iris
+    # from sklearn.model_selection import train_test_split
+    # from sklearn.metrics import f1_score, accuracy_score
+    #
+    # iris = load_iris()
+    #
+    # mapping = {}
+    # vectors = []
+    # for vector in iris.data.tolist():
+    #     new_vec = []
+    #     for val in vector:
+    #         if mapping.get(val, -23) != -23:
+    #             new_vec.append(mapping.get(val))
+    #         else:
+    #             mapping[val] = len(mapping) + 1
+    #             new_vec.append(mapping[val])
+    #     vectors.append(new_vec)
+    #
+    # X_train, X_test, y_train, y_test = train_test_split(vectors, iris.target.tolist(), test_size=0.3)
+    #
+    # clf = DecisionTreeClassifier()
+    # clf.train(X_train, y_train, ['feature1', 'feature2', 'feature3', 'feature4'])
+    # # print(clf.tree)
+    # # print(X_test)
+    #
+    # y_pred = [clf.classify(i) for i in X_test]
+    #
+    # for pred, true in zip(y_pred, y_test):
+    #     if not isinstance(pred, int) or pred == '':
+    #         y_pred.remove(pred)
+    #         y_test.remove(true)
+    # for pred, true in zip(y_pred, y_test):
+    #     if not isinstance(pred, int) or pred == '':
+    #         y_pred.remove(pred)
+    #         y_test.remove(true)
+    #
+    # print(y_train, y_test)
+    #
+    # print(f1_score(y_test, y_pred, average='macro'))
